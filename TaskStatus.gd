@@ -1,0 +1,4 @@
+var INVALID = 0
+var SUCCESS = 1
+var FAILURE = 2
+var RUNNING = 3
