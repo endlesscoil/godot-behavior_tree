@@ -19,7 +19,6 @@ func update(context, delta):
 	pass
 
 func tick(context, delta):
-	print('Behavior::tick')
 	if status == TaskStatus.INVALID:
 		on_start()
 		
