@@ -20,7 +20,9 @@ func on_end():
 		c.invalidate()
 	
 func invalidate():
-	pass
+	.invalidate()
+	for c in children:
+		c.invalidate()
 	
 func add_child(child):
 	children.append(child)
