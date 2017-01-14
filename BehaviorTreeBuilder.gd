@@ -31,6 +31,7 @@ func _init(context):
 
 func set_child_on_parent(child):
 	var parent = parent_node_stack[-1]
+	
 	if parent extends Composite:
 		parent.add_child(child)
 	elif parent extends Decorator:
@@ -44,6 +45,7 @@ func push_parent_node(composite):
 		set_child_on_parent(composite)
 	
 	parent_node_stack.push_back(composite)
+	
 	return self
 	
 func end_decorator():
@@ -56,9 +58,9 @@ func action(node, function):
 	
 func conditional(node, function):
 	return set_child_on_parent(ExecuteActionConditional.new(node, function))
-	
+
+# TODO: Do we really need to implement this?  Slightly more difficult without anonymous functions and probably not worth it.	
 func conditional_bool(node, function):
-	# TODO: implement this when ExecuteActionConditional is done
 	pass
 	
 func log_action(text):
