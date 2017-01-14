@@ -5,6 +5,8 @@ var Composite = preload('Composites/Composite.gd')
 var Selector = preload('Composites/Selector.gd')
 var Sequence = preload('Composites/Sequence.gd')
 var Parallel = preload('Composites/Parallel.gd')
+var ParallelSelector = preload('Composites/ParallelSelector.gd')
+var RandomSelector = preload('Composites/RandomSelector.gd')
 
 var Decorator = preload('Decorators/Decorator.gd')
 var ConditionalDecorator = preload('Decorators/ConditionalDecorator.gd')
@@ -91,13 +93,13 @@ func parallel():
 	return push_parent_node(Parallel.new())
 
 func parallel_selector():
-	pass # TODO
+	return push_parent_node(ParallelSelector.new())
 	
 func selector(abort_type=AbortTypes.NONE):
 	return push_parent_node(Selector.new(abort_type))
 	
 func random_selector():
-	pass # TODO
+	return push_parent_node(RandomSelector.new())
 	
 func sequence(abort_type = AbortTypes.NONE):
 	return push_parent_node(Sequence.new(abort_type))

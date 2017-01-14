@@ -1,9 +1,7 @@
 extends 'Composite.gd'
 
-#var TaskStatus = preload('res://ai/BehaviorTree/TaskStatus.gd').new()
-#var AbortTypes = preload('res://ai/BehaviorTree/Composites/AbortTypes.gd').new()
-
-#var abort_type = AbortTypes.NONE
+# The sequence task is similar to an "and" operation. It will return failure as soon as one of its child tasks return failure. If a
+# child task returns success then it will sequentially run the next task. If all child tasks return success then it will return success.
 
 func _init(abort_type=null):
 	if abort_type == null:
