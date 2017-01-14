@@ -5,7 +5,7 @@ var conditional			# Conditional
 var should_reevaluate	# bool
 var conditional_status 	# TaskStatus
 
-func _init(node, conditional, should_reevaluate):
+func _init(node, conditional, should_reevaluate=false):
 	self.node = node
 	self.conditional = conditional
 	self.should_reevaluate = should_reevaluate
