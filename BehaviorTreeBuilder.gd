@@ -17,6 +17,8 @@ var AlwaysFail = preload('Decorators/AlwaysFail.gd')
 var AlwaysSucceed = preload('Decorators/AlwaysSucceed.gd')
 var Inverter = preload('Decorators/Inverter.gd')
 var Repeater = preload('Decorators/Repeater.gd')
+var UntilFail = preload('Decorators/UntilFail.gd')
+var UntilSuccess = preload('Decorators/UntilSuccess.gd')
 
 var LogAction = preload('Actions/LogAction.gd')
 var ExecuteAction = preload('Actions/ExecuteAction.gd')
@@ -92,10 +94,10 @@ func repeater(count):
 	return push_parent_node(Repeater.new(count))
 	
 func until_fail():
-	pass # TODO
+	return push_parent_node(UntilFail.new())
 	
 func until_success():
-	pass # TODO
+	return push_parent_node(UntilSuccess.new())
 	
 func parallel():
 	return push_parent_node(Parallel.new())
