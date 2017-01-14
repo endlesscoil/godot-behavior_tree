@@ -4,7 +4,7 @@ var status # TaskStatus
 var TaskStatus = preload('res://ai/BehaviorTree/TaskStatus.gd').new()
 
 func _init():
-	pass
+	status = TaskStatus.INVALID
 	
 func invalidate():
 	status = TaskStatus.INVALID

@@ -13,6 +13,10 @@ var ExecuteActionConditional = preload('Conditionals/ExecuteActionConditional.gd
 
 var Decorator = preload('Decorators/Decorator.gd')
 var ConditionalDecorator = preload('Decorators/ConditionalDecorator.gd')
+var AlwaysFail = preload('Decorators/AlwaysFail.gd')
+var AlwaysSucceed = preload('Decorators/AlwaysSucceed.gd')
+var Inverter = preload('Decorators/Inverter.gd')
+var Repeater = preload('Decorators/Repeater.gd')
 
 var LogAction = preload('Actions/LogAction.gd')
 var ExecuteAction = preload('Actions/ExecuteAction.gd')
@@ -76,16 +80,16 @@ func conditional_decorator(node, function, should_reevaluate=true):
 	return push_parent_node(ConditionalDecorator.new(node, function, should_reevaluate))
 
 func always_fail():
-	pass # TODO
+	return push_parent_node(AlwaysFail.new())
 	
 func always_succeed():
-	pass # TODO
+	return push_parent_node(AlwaysSucceed.new())
 	
 func inverter():
-	pass # TODO
+	return push_parent_node(Inverter.new())
 	
 func repeater(count):
-	pass # TODO
+	return push_parent_node(Repeater.new(count))
 	
 func until_fail():
 	pass # TODO

@@ -4,6 +4,7 @@ extends '../Behavior.gd'
 var AbortTypes = preload('res://ai/BehaviorTree/Composites/AbortTypes.gd').new()
 var Conditional = preload('res://ai/BehaviorTree/Conditionals/Conditional.gd')
 var ConditionalDecorator = preload('res://ai/BehaviorTree/Decorators/ConditionalDecorator.gd')
+var Composite = get_script()
 
 var abort_type = AbortTypes.NONE
 var children = []
@@ -29,7 +30,7 @@ func is_first_child_conditional():
 
 func has_lower_priority_conditional_abort_in_children():
 	for c in children:
-		if c.abort_type & AbortTypes.LOWER_PRIORITY:
+		if c extends Composite and c.abort_type & AbortTypes.LOWER_PRIORITY:
 			return true
 			
 	return false
