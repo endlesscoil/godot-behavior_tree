@@ -1,13 +1,18 @@
-var AbortTypes = preload('res://ai/BehaviorTree/Composites/AbortTypes.gd').new()
-var BehaviorTree = preload('res://ai/BehaviorTree/BehaviorTree.gd')
-var Composite = preload('res://ai/BehaviorTree/Composites/Composite.gd')
-var Selector = preload('res://ai/BehaviorTree/Composites/Selector.gd')
-var Sequence = preload('res://ai/BehaviorTree/Composites/Sequence.gd')
-var Decorator = preload('res://ai/BehaviorTree/Decorators/Decorator.gd')
-var ConditionalDecorator = preload('res://ai/BehaviorTree/Decorators/ConditionalDecorator.gd')
-var LogAction = preload('res://ai/BehaviorTree/Actions/LogAction.gd')
-var ExecuteAction = preload('res://ai/BehaviorTree/Actions/ExecuteAction.gd')
-var WaitAction = preload('res://ai/BehaviorTree/Actions/WaitAction.gd')
+var BehaviorTree = preload('BehaviorTree.gd')
+
+var AbortTypes = preload('Composites/AbortTypes.gd').new()
+var Composite = preload('Composites/Composite.gd')
+var Selector = preload('Composites/Selector.gd')
+var Sequence = preload('Composites/Sequence.gd')
+var Parallel = preload('Composites/Parallel.gd')
+
+var Decorator = preload('Decorators/Decorator.gd')
+var ConditionalDecorator = preload('Decorators/ConditionalDecorator.gd')
+
+var LogAction = preload('Actions/LogAction.gd')
+var ExecuteAction = preload('Actions/ExecuteAction.gd')
+var WaitAction = preload('Actions/WaitAction.gd')
+var BehaviorTreeReference = preload('Actions/BehaviorTreeReference.gd')
 
 var context
 
@@ -59,8 +64,7 @@ func wait_action(wait_time):
 	return set_child_on_parent(WaitAction.new(wait_time))
 	
 func sub_tree(sub_behavior_tree):
-	# TODO: implement this when BehaviorTreeReference is done
-	pass
+	return set_child_on_parent(BehaviorTreeReference.new(sub_behavior_tree))
 	
 func conditional_decorator(node, function, should_reevaluate=true):
 	return push_parent_node(ConditionalDecorator.new(node, function, should_reevaluate))
@@ -84,9 +88,9 @@ func until_success():
 	pass # TODO
 	
 func parallel():
-	pass # TODO
-	
-func parallel_elector():
+	return push_parent_node(Parallel.new())
+
+func parallel_selector():
 	pass # TODO
 	
 func selector(abort_type=AbortTypes.NONE):
