@@ -7,6 +7,7 @@ var Decorator = preload('res://ai/BehaviorTree/Decorators/Decorator.gd')
 var ConditionalDecorator = preload('res://ai/BehaviorTree/Decorators/ConditionalDecorator.gd')
 var LogAction = preload('res://ai/BehaviorTree/Actions/LogAction.gd')
 var ExecuteAction = preload('res://ai/BehaviorTree/Actions/ExecuteAction.gd')
+var WaitAction = preload('res://ai/BehaviorTree/Actions/WaitAction.gd')
 
 var context
 
@@ -55,8 +56,7 @@ func log_action(text):
 	return set_child_on_parent(LogAction.new(text))
 	
 func wait_action(wait_time):
-	# TODO: implement this when WaitAction is done.
-	pass
+	return set_child_on_parent(WaitAction.new(wait_time))
 	
 func sub_tree(sub_behavior_tree):
 	# TODO: implement this when BehaviorTreeReference is done
