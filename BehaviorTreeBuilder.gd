@@ -7,6 +7,9 @@ var Sequence = preload('Composites/Sequence.gd')
 var Parallel = preload('Composites/Parallel.gd')
 var ParallelSelector = preload('Composites/ParallelSelector.gd')
 var RandomSelector = preload('Composites/RandomSelector.gd')
+var RandomSequence = preload('Composites/RandomSequence.gd')
+
+var ExecuteActionConditional = preload('Conditionals/ExecuteActionConditional.gd')
 
 var Decorator = preload('Decorators/Decorator.gd')
 var ConditionalDecorator = preload('Decorators/ConditionalDecorator.gd')
@@ -52,8 +55,7 @@ func action(node, function):
 	return set_child_on_parent(ExecuteAction.new(node, function))
 	
 func conditional(node, function):
-	# TODO: implement this when ExecuteActionConditional is done
-	pass
+	return set_child_on_parent(ExecuteActionConditional.new(node, function))
 	
 func conditional_bool(node, function):
 	# TODO: implement this when ExecuteActionConditional is done
