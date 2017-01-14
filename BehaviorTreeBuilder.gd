@@ -105,7 +105,7 @@ func sequence(abort_type = AbortTypes.NONE):
 	return push_parent_node(Sequence.new(abort_type))
 	
 func random_sequence():
-	pass # TODO
+	return push_parent_node(RandomSequence.new())
 	
 func end_composite():
 	current_node = parent_node_stack[-1]
