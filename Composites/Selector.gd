@@ -13,7 +13,6 @@ func update(context, delta):
 		
 	var current = children[current_child_index]
 	var status = current.tick(context, delta)
-	print('Selector::update idx=', current_child_index, ' status=', status)
 	
 	if status == TaskStatus.SUCCESS:
 		current_child_index = 0

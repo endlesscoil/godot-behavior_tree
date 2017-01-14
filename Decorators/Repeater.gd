@@ -3,16 +3,14 @@ extends 'Decorator.gd'
 var count
 var repeat_forever
 var end_on_failure
-var iteration_count
+var iteration_count = 0
 
 func _init(count=0, repeat_forever=false, end_on_failure=false):
 	self.count = count
 	self.repeat_forever = repeat_forever
 	self.end_on_failure = end_on_failure
-	#self.iteration_count = 0
 
 func on_start():
-	print('REPEATER ON START')
 	iteration_count = 0
 
 func update(context, delta):
