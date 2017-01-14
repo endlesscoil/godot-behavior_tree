@@ -3,6 +3,7 @@ extends '../Behavior.gd'
 #var TaskStatus = preload('res://ai/BehaviorTree/TaskStatus.gd').new()
 var AbortTypes = preload('res://ai/BehaviorTree/Composites/AbortTypes.gd').new()
 var Conditional = preload('res://ai/BehaviorTree/Conditionals/Conditional.gd')
+var ConditionalDecorator = preload('res://ai/BehaviorTree/Decorators/ConditionalDecorator.gd')
 
 var abort_type = AbortTypes.NONE
 var children = []
@@ -14,7 +15,8 @@ func on_start():
 	current_child_index = 0
 	
 func on_end():
-	pass
+	for c in children:
+		c.invalidate()
 	
 func invalidate():
 	pass
@@ -23,7 +25,7 @@ func add_child(child):
 	children.append(child)
 	
 func is_first_child_conditional():
-	return children[0] extends Conditional
+	return children[0] extends Conditional or children[0] extends ConditionalDecorator
 
 func has_lower_priority_conditional_abort_in_children():
 	for c in children:
@@ -63,8 +65,7 @@ func update_self_abort_conditional(context, delta, status_check):
 			break
 			
 func update_conditional_node(context, delta, node):
-	### FIXME
-	#if node extends ConditionalDecorator:
-	#	return node.execute_conditional(context, true)
-	#else:
-	return node.update(context, delta)
+	if node extends ConditionalDecorator:
+		return node.execute_conditional(context, delta, true)
+	else:
+		return node.update(context, delta)

@@ -22,5 +22,4 @@ func tick(delta):
 			print('BehaviorTree::tick')
 			root.tick(context, delta)
 	else:
-		print ('BehaviorTree::tick (2)')
 		root.tick(context, delta)

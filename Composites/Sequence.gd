@@ -18,13 +18,15 @@ func update(context, delta):
 	var current = children[current_child_index]
 	var status = current.tick(context, delta)
 	
+	if status == TaskStatus.FAILURE:
+		current_child_index = 0
+	
 	if status != TaskStatus.SUCCESS:
 		return status
 		
 	current_child_index += 1
 	
 	if current_child_index == children.size():
-		print("resetting")
 		current_child_index = 0
 		return TaskStatus.SUCCESS
 		
