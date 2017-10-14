@@ -22,9 +22,7 @@ func tick(context, delta):
 	if status == TaskStatus.INVALID:
 		on_start()
 	
-	status = update(context, delta)
-	#print('Behavior::tick status=', status)
-	
+	status = update(context, delta)	
 	if status != TaskStatus.RUNNING:
 		on_end()
 		

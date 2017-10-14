@@ -18,8 +18,7 @@ func tick(delta):
 		if elapsed_time <= 0:
 			while elapsed_time <= 0:
 				elapsed_time += update_period
-				
-			#print('BehaviorTree::tick')
+
 			root.tick(context, delta)
 	else:
 		root.tick(context, delta)

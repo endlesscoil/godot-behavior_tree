@@ -16,7 +16,7 @@ func on_start():
 func update(context, delta):
 	conditional_status = execute_conditional(context)
 
-	if (conditional_status == TaskStatus.SUCCESS):
+	if conditional_status == TaskStatus.SUCCESS:
 		return child.tick(context, delta)
 
 	return TaskStatus.FAILURE
